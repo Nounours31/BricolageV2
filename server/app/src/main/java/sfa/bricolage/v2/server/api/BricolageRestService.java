@@ -64,7 +64,7 @@ public class BricolageRestService  {
 	@Path("/user/{id}")
     @Produces(MediaType.APPLICATION_JSON)
 	 public Response getUserInfo(@PathParam("id") int id) {
-		 _logger.debug(String.format("/user/%d", id));
+		 _logger.debug(String.format("getUserInfo - Call WS: /user/%d", id));
 		 User u = User.buildFromDB(id);
 		 
 		 Gson gson = new Gson();

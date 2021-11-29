@@ -156,15 +156,22 @@ public class Db {
 		return this.insert (conn, sqlInsert);
 	}
 	
-	protected String toString(ArrayList<HashMap<String, Object>> x) {
+	protected String toStringSelect(ArrayList<HashMap<String, Object>> x) {
 		StringBuffer sb = new StringBuffer();
-		sb.append(x.size() + '\n');
-		for (HashMap<String, Object> y : x) {
-			for (String s : y.keySet()) {
-				sb.append(String.format("[%s,%s]", s, y.get(s)));
+		sb.append("----------------------------------------------------------------"  + System.lineSeparator());
+		sb.append("-- Resultat du select"  + System.lineSeparator());
+		sb.append("----------------------------------------------------------------"  + System.lineSeparator());
+		sb.append("Nb Reponse:" + x.size() + System.lineSeparator());
+		int i = 1;
+		for (HashMap<String, Object> uneLigne : x) {
+			sb.append (String.format ("%03d/%03d  ", i, x.size()));
+			for (String sKey : uneLigne.keySet()) {
+				sb.append(String.format("[>%s<=>%s<]", sKey, uneLigne.get(sKey)));
 			}
-			sb.append('\n');
+			sb.append(System.lineSeparator());
+			i++;
 		}
+		sb.append("----------------------------------------------------------------"  + System.lineSeparator());
 		return sb.toString();
 	}
 }

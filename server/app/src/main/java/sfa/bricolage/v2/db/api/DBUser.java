@@ -9,9 +9,9 @@ import sfa.bricolage.v2.global.E4ALogger;
 
 public class DBUser extends Db {
 
-	private static final String Matricule = "matricule";
-	private static final String PreNom = "prenom";
-	private static final String Nom = "nom";
+	private static final String Matricule = "Matricule";
+	private static final String PreNom = "Prenom";
+	private static final String Nom = "Nom";
 	
 	private static E4ALogger _logger = E4ALogger.getLogger("DBUser");
 
@@ -25,7 +25,7 @@ public class DBUser extends Db {
 		User u = null;
 		try {
 			ArrayList<HashMap<String, Object>> lUsers = db.selectAsRest(sql);
-			_logger.debug( db.toString(lUsers));
+			_logger.debug( db.toStringSelect(lUsers));
 			for (HashMap<String, Object> user : lUsers) {
 				u = new User();
 				u.setId(id);
